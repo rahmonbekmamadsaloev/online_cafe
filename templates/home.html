@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block home %}
+<form method="post" style="margin-left: 100px;">
+    {% csrf_token %}
+    <input type="text" name="serch" id="serch" style="width:90%;" placeholder="поиск" value="{{ query }}">
+    <button type="submit" style="color:red; margin-left:10px;">Поиск</button>
+</form>
+{% endblock home %}
+
+{% block main %}
+    {% for dish in data %}
+        <div class="dish">
+            <h2>{{ dish.name }}</h2>
+            <p>{{ dish.description }}</p>
+            <p>Цена: {{ dish.price }} ₽</p>
+            <p>Категория: {{ dish.category }}</p>
+                <img src="{{ dish.image_url.url }}" alt="{{ dish.name }}">
+            <a href="{% url 'order' %}">
+                <button>Заказать</button>
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

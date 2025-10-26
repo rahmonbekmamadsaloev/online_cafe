@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+
+    <header>
+        Добро пожаловат в наш кофе 
+        {% block home %}
+        {% endblock home %}
+        {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}" style="color: red; margin-left: 10px;">Войти</a>
+            <a href="{% url 'register' %}" style="color: red; margin-left: 10px;">Зарегистрироваться</a>
+        {% else %}
+            <span>Привет, {{ user.username }}!</span>
+            <a href="{% url 'logout_view' %} " style="color: red" >Выйти</a>
+        {% endif %}
+    
+    </header>
+
+    <main>
+        {% block main %}
+        {% endblock main %}
+    </main>
+
+    <footer>
+       Кафе — это предприятие общественного питания, предлагающее ограниченный, по сравнению с рестораном, ассортимент блюд и напитков, а также досуговые услуги. Они могут быть разных типов, например, арт-кафе, бургерные или антикафе, и служат местом для еды, общения, отдыха и деловых встреч. Успех кафе зависит от качества обслуживания, меню, миссии заведения и атмосферы. 
+
+    </footer>
+
+</body>
+</html>

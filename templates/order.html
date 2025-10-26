@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-4">
+        <label for="name" class="form-label">Имя</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Введите ваше имя"  style="width: 95%;"required>
+    </div>
+
+    <div class="mb-3">
+        <label for="des" class="form-label">Комментарий</label>
+        <textarea class="form-control" id="des" name="des" placeholder="Введите комментарий" required style="width: 100%;"></textarea>
+
+    </div>
+
+    <div class="mb-3">
+        <label for="day" class="form-label">Дата</label>
+        <input type="datetime-local" class="form-control" id="day" name="day" placeholder="Введите дату">
+    </div>
+
+    <div class="mb-3">
+        <label for="adres" class="form-label">Адрес</label>
+        <textarea class="form-control" id="adres" name="adres" placeholder="Введите ваш адрес" style="width: 100%;" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Одобрить</button>
+</form>
+{% endblock main %}
